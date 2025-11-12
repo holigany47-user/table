@@ -3,6 +3,7 @@ from aiogram import Router, F
 from aiogram.types import Message, CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup
 from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
+from aiogram.types import FSInputFile  # ДОБАВЛЯЕМ ЭТОТ ИМПОРТ
 
 from bot.services.table_manager import AdvancedTableManager
 from bot.handlers.states import TableStates
@@ -147,7 +148,6 @@ async def handle_download_table(callback: CallbackQuery):
         return
     
     try:
-        from aiogram.types import FSInputFile
         file = FSInputFile(table.file_path, filename=table.original_name)
         await callback.message.answer_document(
             document=file,
