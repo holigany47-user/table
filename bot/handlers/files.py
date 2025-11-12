@@ -5,7 +5,7 @@ from aiogram.types import Message
 from aiogram.filters import StateFilter
 from aiogram.fsm.context import FSMContext
 
-from bot.services.table_manager import AdvancedTableManager  # ИСПРАВЛЕН ИМПОРТ
+from bot.services.table_manager import AdvancedTableManager
 from bot.handlers.states import TableStates
 from bot.utils.helpers import validate_file_extension, safe_filename
 
