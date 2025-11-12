@@ -1,11 +1,7 @@
 import os
 import logging
 from dotenv import load_dotenv
-from aiogram import Bot, Dispatcher, Router, F
-from aiogram.types import Message, CallbackQuery, FSInputFile
-from aiogram.filters import Command, StateFilter
-from aiogram.fsm.state import State, StatesGroup
-from aiogram.fsm.context import FSMContext
+from aiogram import Bot, Dispatcher
 from aiogram.fsm.storage.memory import MemoryStorage
 
 # Загрузка переменных окружения
@@ -24,11 +20,10 @@ bot = Bot(token=BOT_TOKEN)
 storage = MemoryStorage()
 dp = Dispatcher(storage=storage)
 
-# Импортируем роутеры
+# Импортируем и регистрируем роутеры
 from bot.handlers.start import start_router
 from bot.handlers.files import files_router
 
-# Регистрируем роутеры
 dp.include_router(start_router)
 dp.include_router(files_router)
 
